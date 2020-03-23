@@ -1,5 +1,3 @@
-package guestmanagementsystem;
-
 public class GuestManagementSystem {
 
 	public static void main(String[] args) {
