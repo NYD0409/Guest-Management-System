@@ -19,6 +19,18 @@ public class GuestManagementSystem {
 				if (num == 1) {
 					addGuest();
 			}
+				else if (num == 2) {
+					deleteGuest();
+				}
+				else if (num == 3) {
+					editGuest();
+				}
+				else if (num == 4) {
+					viewGuest();
+				}
+				else {
+					continue;
+				}
 		}
 	}
 	
@@ -26,6 +38,28 @@ public class GuestManagementSystem {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Guest code");
 		int guestcode = input.nextInt();
-		System.out.println(guestcode);
+		System.out.println("Guest name");
+		String guestName = input.next();
+		System.out.println("E-maill address");
+		String guestEmail = input.next();
+		System.out.println("Phone number");
+		String guestPhone = input.next();
 	}
+	
+	public static void deleteGuest() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Guest code");
+		int guestcode = input.nextInt();
+	}
+	
+	public static void editGuest() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Guest code");
+		int guestcode = input.nextInt();
+	}
+	
+	public static void viewGuest() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Guest code");
+		int guestcode = input.nextInt();
 }
