@@ -62,4 +62,5 @@ public class GuestManagementSystem {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Guest code");
 		int guestcode = input.nextInt();
+	}
 }
