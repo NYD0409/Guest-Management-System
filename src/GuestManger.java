@@ -67,8 +67,8 @@ public class GuestManger {
 				}
 				else {
 					continue;
+				}
 			}
-		}
 		}
 	}
 	
