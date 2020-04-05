@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class GuestManger {
 	Guest guest;
 	Scanner input;

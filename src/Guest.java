@@ -14,8 +14,6 @@ public class Guest {
 		this.code = code;
 	}
 
-	
-	
 	public Guest(String name, int code, String email, String phone) {		
 		this.name = name;
 		this.code = code;
