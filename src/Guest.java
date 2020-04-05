@@ -21,6 +21,14 @@ public class Guest {
 		this.phone = phone;
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public void printInfo() {
 		System.out.println("Name:" + name + " Code:" + code + " Email:" + email + " Phone:" + phone);
 	}
