@@ -5,13 +5,16 @@ public class Guest {
 	int code;
 	String email;
 	String phone;
+	static int numGuestsRegistered = 0;
 	
 	public Guest() {	
+		numGuestsRegistered++;
 	}
 	
 	public Guest(String name, int code) {		
 		this.name = name;
 		this.code = code;
+		numGuestsRegistered++;
 	}
 
 	public Guest(String name, int code, String email, String phone) {		
@@ -19,6 +22,7 @@ public class Guest {
 		this.code = code;
 		this.email = email;
 		this.phone = phone;
+		numGuestsRegistered++;
 	}
 	
 	public String getName() {

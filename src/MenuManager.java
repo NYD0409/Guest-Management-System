@@ -3,7 +3,7 @@ import java.util.*;
 public class MenuManager {
 	public static void main(String[] args) {
 			Scanner input = new Scanner(System.in);
-			GuestManger guestManger = new GuestManger(input);
+			GuestManager guestManger = new GuestManager(input);
 			
 			int num = -1;
 			while (num != 5) {
@@ -11,7 +11,7 @@ public class MenuManager {
 				System.out.println(" 1. Add Guest");
 				System.out.println(" 2. Delete Guest");
 				System.out.println(" 3. Edit Guest");
-				System.out.println(" 4. View Guest");
+				System.out.println(" 4. View Guests");
 				System.out.println(" 5. Exit");
 				System.out.print("Select one number between 1 - 5:");
 				
@@ -27,7 +27,7 @@ public class MenuManager {
 					guestManger.editGuest();
 				}
 				else if (num == 4) {
-					guestManger.viewGuest();
+					guestManger.viewGuests();
 				}
 				else {
 					continue;
