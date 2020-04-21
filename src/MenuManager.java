@@ -3,7 +3,7 @@ import java.util.*;
 public class MenuManager {
 	public static void main(String[] args) {
 			Scanner input = new Scanner(System.in);
-			GuestManager guestManger = new GuestManager(input);
+			GuestManager guestManager = new GuestManager(input);
 			
 			int num = -1;
 			while (num != 5) {
@@ -18,16 +18,16 @@ public class MenuManager {
 				num = input.nextInt();
 				
 				if (num == 1) {
-					guestManger.addGuest();
+					guestManager.addGuest();
 				}
 				else if (num == 2) {
-					guestManger.deleteGuest();
+					guestManager.deleteGuest();
 				}
 				else if (num == 3) {
-					guestManger.editGuest();
+					guestManager.editGuest();
 				}
 				else if (num == 4) {
-					guestManger.viewGuests();
+					guestManager.viewGuests();
 				}
 				else {
 					continue;

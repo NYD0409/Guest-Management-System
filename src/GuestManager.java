@@ -1,7 +1,8 @@
 import java.util.Scanner;
+
+import guest.FriendGuest;
+import guest.Guest;
 import java.util.ArrayList;
-
-
 
 public class GuestManager {
 	ArrayList<Guest> guests = new ArrayList<Guest>();
@@ -11,16 +12,30 @@ public class GuestManager {
 	}
 	
 	public void addGuest() {
-		Guest guest = new Guest();
-		System.out.print("Guest code : ");
-		guest.code = input.nextInt();
-		System.out.print("Guest name : ");
-		guest.name = input.next();
-		System.out.print("E-maill address : ");
-		guest.email = input.next();
-		System.out.print("Phone number : ");
-		guest.phone = input.next();
-		guests.add(guest);
+		int kind = 0;
+		Guest guest;
+		while (kind != 1 && kind != 2) {
+			System.out.println("1 for Family");
+			System.out.println("2 for Friend");
+			System.out.print("Select num for Guest Kind between 1 and 2: ");		
+			kind = input.nextInt();
+			
+			if (kind == 1) {
+				guest = new Guest();
+				guest.getUserInput(input);
+				guests.add(guest);
+				break;
+			}
+			else if (kind == 2) {
+				guest = new FriendGuest();
+				guest.getUserInput(input);
+				guests.add(guest);
+				break;
+			}
+			else {
+				System.out.print("Select num for Guest Kind between 1 and 2: ");
+			}
+		}
 	}
 	
 	public void deleteGuest() {
@@ -28,14 +43,14 @@ public class GuestManager {
 		int guestcode = input.nextInt();
 		int index = -1;
 		for (int i=0; i<guests.size(); i++) {
-			if(guests.get(i).code == guestcode) {
+			if(guests.get(i).getCode() == guestcode) {
 				index = i;
 				break;
 			}
 		}		
 		if (index >= 0) {
 			guests.remove(index);
-			Guest.numGuestsRegistered--;
+
 			System.out.println("the guest" + guestcode + " is deleted.");
 		}
 		else {
@@ -49,7 +64,7 @@ public class GuestManager {
 		int guestcode = input.nextInt();
 		for (int i=0; i<guests.size(); i++) {
 			Guest guest = guests.get(i);
-			if (guests.get(i).code == guestcode) {
+			if (guest.getCode() == guestcode) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("Guest Info Edit Menu");
@@ -64,33 +79,37 @@ public class GuestManager {
 				
 					if (num == 1) {
 						System.out.print("Guest code : ");
-						guest.code = input.nextInt();
+						int code = input.nextInt();
+						guest.setCode(code);
 					}
 					else if (num == 2) {
 						System.out.print("Guest name : ");
-						guest.name = input.next();;
+						String name = input.next();
+						guest.setName(name);
 					}
 					else if (num == 3) {
 						System.out.print("E-maill address : ");
-						guest.email = input.next();
+						String email = input.next();
+						guest.setEmail(email);
 					}
 					else if (num == 4) {
 						System.out.print("Phone number : ");
-						guest.phone = input.next();
+						String phone = input.next();
+						guest.setPhone(phone);
 					}
 					else {
 						continue;
-					}
-				}
+					} // if
+				} // while
 				break;
-			}
-		}
+			} // if
+		} // for
 	}
 	
 	public void viewGuests() {
 //		System.out.println("Guest code");
 //		int guestcode = input.nextInt();
-		System.out.println("# of registered guests:" + Guest.numGuestsRegistered);
+		System.out.println("# of registered guests:" + guests.size());
 		for (int i=0; i<guests.size(); i++) {
 			guests.get(i).printInfo();
 		}
