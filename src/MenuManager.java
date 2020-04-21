@@ -13,7 +13,7 @@ public class MenuManager {
 				System.out.println(" 3. Edit Guest");
 				System.out.println(" 4. View Guests");
 				System.out.println(" 5. Exit");
-				System.out.print("Select one number between 1 - 5:");
+				System.out.print("Select one number between 1 - 5 : ");
 				
 				num = input.nextInt();
 				
