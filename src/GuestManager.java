@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 import guest.FriendGuest;
 import guest.Guest;
+import guest.GuestKind;
+import guest.VIPGuest;
+
 import java.util.ArrayList;
 
 public class GuestManager {
@@ -17,17 +20,24 @@ public class GuestManager {
 		while (kind != 1 && kind != 2) {
 			System.out.println("1 for Family");
 			System.out.println("2 for Friend");
-			System.out.print("Select num for Guest Kind between 1 and 2: ");		
+			System.out.println("3 for VIP");
+			System.out.print("Select num for Guest Kind between 1 and 3: ");		
 			kind = input.nextInt();
 			
 			if (kind == 1) {
-				guest = new Guest();
+				guest = new Guest(GuestKind.Family);
 				guest.getUserInput(input);
 				guests.add(guest);
 				break;
 			}
 			else if (kind == 2) {
-				guest = new FriendGuest();
+				guest = new FriendGuest(GuestKind.Friend);
+				guest.getUserInput(input);
+				guests.add(guest);
+				break;
+			}
+			else if (kind == 3) {
+				guest = new VIPGuest(GuestKind.VIP);
 				guest.getUserInput(input);
 				guests.add(guest);
 				break;

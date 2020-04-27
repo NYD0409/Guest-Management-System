@@ -12,13 +12,18 @@ public class Guest {
 	public Guest() {	
 	}
 	
+	public Guest(GuestKind kind) {
+		this.kind = kind;
+	}
+	
 	public Guest(String name, int code) {		
 		this.name = name;
 		this.code = code;
 
 	}
 
-	public Guest(String name, int code, String email, String phone) {		
+	public Guest(GuestKind kind, String name, int code, String email, String phone) {		
+		this.kind = kind;
 		this.name = name;
 		this.code = code;
 		this.email = email;
@@ -66,23 +71,39 @@ public class Guest {
 	}
 	
 	public void printInfo() {
-		System.out.println("Name:" + name + " Code:" + code + " Email:" + email + " Phone:" + phone);
+		String gkind = "none";
+		switch(this.kind) {
+		case Family:
+			gkind = "Fam.";
+			break;
+		case Friend:
+			gkind = "Fri.";
+			break;
+		case VIP:
+			gkind = "VIP.";
+			break;
+		case Colleague:
+			gkind = "Col.";
+			break;
+		default:	
+		}
+		System.out.println("kind:" + gkind + " Name:" + name + " Code:" + code + " Email:" + email + " Phone:" + phone);
 	}
 	
 	public void getUserInput (Scanner input) {
-		System.out.print("Guest code : ");
+		System.out.print("Guest code :");
 		int code = input.nextInt();
 		this.setCode(code);
 		
-		System.out.print("Guest name : ");
+		System.out.print("Guest name :");
 		String name = input.next();
 		this.setName(name);
 		
-		System.out.print("E-maill address : ");
+		System.out.print("E-maill address :");
 		String email = input.next();
 		this.setEmail(email);
 		
-		System.out.print("Phone number : ");
+		System.out.print("Phone number :");
 		String phone = input.next();
 		this.setPhone(phone);
 	}
