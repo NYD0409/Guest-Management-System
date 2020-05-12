@@ -2,7 +2,7 @@ package guest;
 
 import java.util.Scanner;
 
-public abstract class Guest {
+public abstract class Guest implements GuestInput {
 	protected GuestKind kind = GuestKind.Family;
 	protected String name;
 	protected int code;
@@ -71,4 +71,48 @@ public abstract class Guest {
 	}
 	
 	public abstract void printInfo();
+	
+	public void setGuestCode(Scanner input) {
+		System.out.print("Guest code : ");
+		int code = input.nextInt();
+		this.setCode(code);		
+	}
+		
+	public void setGuestName(Scanner input) {
+		System.out.print("Guest name : ");
+		String name = input.next();
+		this.setName(name);
+	}
+	
+	public void setGuestEmail(Scanner input) {
+		System.out.print("E-maill address : ");
+		String email = input.next();
+		this.setEmail(email);	
+	}
+	
+	public void setGuestPhone(Scanner input) {
+		System.out.print("Phone number : ");
+		String phone = input.next();
+		this.setPhone(phone);
+	}
+	
+	public String getKindString() {
+		String gkind = "none";
+		switch(this.kind) {
+		case Family:
+			gkind = "Fam.";
+			break;
+		case Friend:
+			gkind = "Fri.";
+			break;
+		case VIP:
+			gkind = "VIP.";
+			break;
+		case Colleague:
+			gkind = "Col.";
+			break;
+		default:	
+		}
+		return gkind;
+	}
 }

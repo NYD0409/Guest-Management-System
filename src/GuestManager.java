@@ -99,16 +99,16 @@ public class GuestManager {
 					
 					switch(num) {
 					case 1:
-						setGuestCode(guest, input);
+						guest.setGuestCode(input);
 						break;
 					case 2:
-						setGuestName(guest, input);
+						guest.setGuestName(input);
 						break;
 					case 3:
-						setGuestEmail(guest, input);
+						guest.setGuestEmail(input);
 						break;
 					case 4:
-						setGuestPhone(guest, input);
+						guest.setGuestPhone(input);
 						break;
 					default:
 						continue;									
@@ -124,30 +124,6 @@ public class GuestManager {
 		for (int i=0; i<guests.size(); i++) {
 			guests.get(i).printInfo();
 		}
-	}
-	
-	public void setGuestCode(GuestInput guest, Scanner input) {
-		System.out.print("Guest code : ");
-		int code = input.nextInt();
-		guest.setCode(code);		
-	}
-	
-	public void setGuestName(GuestInput guest, Scanner input) {
-		System.out.print("Guest name : ");
-		String name = input.next();
-		guest.setName(name);
-	}
-	
-	public void setGuestEmail(GuestInput guest, Scanner input) {
-		System.out.print("E-maill address : ");
-		String email = input.next();
-		guest.setEmail(email);	
-	}
-	
-	public void setGuestPhone(GuestInput guest, Scanner input) {
-		System.out.print("Phone number : ");
-		String phone = input.next();
-		guest.setPhone(phone);
 	}
 	
 	public void showEditMenu() {
