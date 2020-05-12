@@ -7,31 +7,35 @@ public class MenuManager {
 			
 			int num = -1;
 			while (num != 5) {
-				System.out.println("Guest Management System Menu");
-				System.out.println(" 1. Add Guest");
-				System.out.println(" 2. Delete Guest");
-				System.out.println(" 3. Edit Guest");
-				System.out.println(" 4. View Guests");
-				System.out.println(" 5. Exit");
-				System.out.print("Select one number between 1 - 5 : ");
-				
+				showMenu();				
 				num = input.nextInt();
 				
-				if (num == 1) {
+				switch(num) {
+				case 1:
 					guestManager.addGuest();
-				}
-				else if (num == 2) {
+					break;
+				case 2:
 					guestManager.deleteGuest();
-				}
-				else if (num == 3) {
+					break;
+				case 3:
 					guestManager.editGuest();
-				}
-				else if (num == 4) {
+					break;
+				case 4:
 					guestManager.viewGuests();
-				}
-				else {
+					break;
+				default:
 					continue;
+				}
 			}
 		}
+	
+	public static void showMenu() {
+		System.out.println("Guest Management System Menu");
+		System.out.println(" 1. Add Guest");
+		System.out.println(" 2. Delete Guest");
+		System.out.println(" 3. Edit Guest");
+		System.out.println(" 4. View Guests");
+		System.out.println(" 5. Exit");
+		System.out.print("Select one number between 1 - 5 : ");
 	}
 }

@@ -53,21 +53,36 @@ public class GuestManager {
 	public void deleteGuest() {
 		System.out.println("Guest code");
 		int guestcode = input.nextInt();
-		int index = -1;
+		int index = findIndex(guestcode);
 		for (int i=0; i<guests.size(); i++) {
 			if(guests.get(i).getCode() == guestcode) {
 				index = i;
 				break;
 			}
 		}		
+		removefromStudents(index, guestcode);
+	}
+	
+	public int findIndex(int guestcode) {
+		int index = -1;
+		for (int i=0; i<guests.size(); i++) {
+			if(guests.get(i).getCode() == guestcode) {
+				index = i;
+				break;
+			}
+		}
+		return index;
+	}
+	
+	public int removefromStudents(int index, int guestcode) {
 		if (index >= 0) {
 			guests.remove(index);
-
 			System.out.println("the guest" + guestcode + " is deleted.");
+			return 1;
 		}
 		else {
 			System.out.println("The guest has not been registered");
-			return;
+			return -1;
 		}
 	}
 	
@@ -75,42 +90,28 @@ public class GuestManager {
 		System.out.println("Guest code");
 		int guestcode = input.nextInt();
 		for (int i=0; i<guests.size(); i++) {
-			GuestInput guestInput = guests.get(i);
-			if (guestInput.getCode() == guestcode) {
+			GuestInput guest = guests.get(i);
+			if (guest.getCode() == guestcode) {
 				int num = -1;
 				while (num != 5) {
-					System.out.println("Guest Info Edit Menu");
-					System.out.println(" 1. Edit Code");
-					System.out.println(" 2. Edit Name");
-					System.out.println(" 3. Edit Email");
-					System.out.println(" 4. Edit Phone");
-					System.out.println(" 5. Exit");
-					System.out.print("Select one number between 1 - 5:");
-				
+					showEditMenu();				
 					num = input.nextInt();
-				
-					if (num == 1) {
-						System.out.print("Guest code : ");
-						int code = input.nextInt();
-						guestInput.setCode(code);
-					}
-					else if (num == 2) {
-						System.out.print("Guest name : ");
-						String name = input.next();
-						guestInput.setName(name);
-					}
-					else if (num == 3) {
-						System.out.print("E-maill address : ");
-						String email = input.next();
-						guestInput.setEmail(email);
-					}
-					else if (num == 4) {
-						System.out.print("Phone number : ");
-						String phone = input.next();
-						guestInput.setPhone(phone);
-					}
-					else {
-						continue;
+					
+					switch(num) {
+					case 1:
+						setGuestCode(guest, input);
+						break;
+					case 2:
+						setGuestName(guest, input);
+						break;
+					case 3:
+						setGuestEmail(guest, input);
+						break;
+					case 4:
+						setGuestPhone(guest, input);
+						break;
+					default:
+						continue;									
 					} // if
 				} // while
 				break;
@@ -119,11 +120,43 @@ public class GuestManager {
 	}
 	
 	public void viewGuests() {
-//		System.out.println("Guest code");
-//		int guestcode = input.nextInt();
 		System.out.println("# of registered guests:" + guests.size());
 		for (int i=0; i<guests.size(); i++) {
 			guests.get(i).printInfo();
 		}
+	}
+	
+	public void setGuestCode(GuestInput guest, Scanner input) {
+		System.out.print("Guest code : ");
+		int code = input.nextInt();
+		guest.setCode(code);		
+	}
+	
+	public void setGuestName(GuestInput guest, Scanner input) {
+		System.out.print("Guest name : ");
+		String name = input.next();
+		guest.setName(name);
+	}
+	
+	public void setGuestEmail(GuestInput guest, Scanner input) {
+		System.out.print("E-maill address : ");
+		String email = input.next();
+		guest.setEmail(email);	
+	}
+	
+	public void setGuestPhone(GuestInput guest, Scanner input) {
+		System.out.print("Phone number : ");
+		String phone = input.next();
+		guest.setPhone(phone);
+	}
+	
+	public void showEditMenu() {
+		System.out.println("Guest Info Edit Menu");
+		System.out.println(" 1. Edit Code");
+		System.out.println(" 2. Edit Name");
+		System.out.println(" 3. Edit Email");
+		System.out.println(" 4. Edit Phone");
+		System.out.println(" 5. Exit");
+		System.out.print("Select one number between 1 - 5:");	
 	}
 }
