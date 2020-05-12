@@ -1,14 +1,16 @@
 import java.util.Scanner;
 
+import guest.FamilyGuest;
 import guest.FriendGuest;
 import guest.Guest;
+import guest.GuestInput;
 import guest.GuestKind;
 import guest.VIPGuest;
 
 import java.util.ArrayList;
 
 public class GuestManager {
-	ArrayList<Guest> guests = new ArrayList<Guest>();
+	ArrayList<GuestInput> guests = new ArrayList<GuestInput>();
 	Scanner input;
 	GuestManager(Scanner input){
 		this.input = input;		
@@ -16,7 +18,7 @@ public class GuestManager {
 	
 	public void addGuest() {
 		int kind = 0;
-		Guest guest;
+		GuestInput guestInput;
 		while (kind != 1 && kind != 2) {
 			System.out.println("1 for Family");
 			System.out.println("2 for Friend");
@@ -25,21 +27,21 @@ public class GuestManager {
 			kind = input.nextInt();
 			
 			if (kind == 1) {
-				guest = new Guest(GuestKind.Family);
-				guest.getUserInput(input);
-				guests.add(guest);
+				guestInput = new FamilyGuest(GuestKind.Family);
+				guestInput.getUserInput(input);
+				guests.add(guestInput);
 				break;
 			}
 			else if (kind == 2) {
-				guest = new FriendGuest(GuestKind.Friend);
-				guest.getUserInput(input);
-				guests.add(guest);
+				guestInput = new FriendGuest(GuestKind.Friend);
+				guestInput.getUserInput(input);
+				guests.add(guestInput);
 				break;
 			}
 			else if (kind == 3) {
-				guest = new VIPGuest(GuestKind.VIP);
-				guest.getUserInput(input);
-				guests.add(guest);
+				guestInput = new VIPGuest(GuestKind.VIP);
+				guestInput.getUserInput(input);
+				guests.add(guestInput);
 				break;
 			}
 			else {
@@ -73,8 +75,8 @@ public class GuestManager {
 		System.out.println("Guest code");
 		int guestcode = input.nextInt();
 		for (int i=0; i<guests.size(); i++) {
-			Guest guest = guests.get(i);
-			if (guest.getCode() == guestcode) {
+			GuestInput guestInput = guests.get(i);
+			if (guestInput.getCode() == guestcode) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("Guest Info Edit Menu");
@@ -90,22 +92,22 @@ public class GuestManager {
 					if (num == 1) {
 						System.out.print("Guest code : ");
 						int code = input.nextInt();
-						guest.setCode(code);
+						guestInput.setCode(code);
 					}
 					else if (num == 2) {
 						System.out.print("Guest name : ");
 						String name = input.next();
-						guest.setName(name);
+						guestInput.setName(name);
 					}
 					else if (num == 3) {
 						System.out.print("E-maill address : ");
 						String email = input.next();
-						guest.setEmail(email);
+						guestInput.setEmail(email);
 					}
 					else if (num == 4) {
 						System.out.print("Phone number : ");
 						String phone = input.next();
-						guest.setPhone(phone);
+						guestInput.setPhone(phone);
 					}
 					else {
 						continue;
