@@ -22,7 +22,6 @@ public class GuestManager {
 		GuestInput guestInput;
 		while (kind < 1 ||  kind > 2) {
 			try {
-				System.out.println("go into add guests");
 				System.out.println("1 for Family");
 				System.out.println("2 for Friend");
 				System.out.println("3 for VIP");

@@ -2,6 +2,8 @@ package guest;
 
 import java.util.Scanner;
 
+import exception.EmailFormatException;
+
 public abstract class Guest implements GuestInput {
 	protected GuestKind kind = GuestKind.Family;
 	protected String name;
@@ -50,7 +52,11 @@ public abstract class Guest implements GuestInput {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) throws EmailFormatException{
+		if (!email.contains("@") && !email.equals("")) {
+			throw new EmailFormatException();
+		}
+		
 		this.email = email;
 	}
 
@@ -85,9 +91,17 @@ public abstract class Guest implements GuestInput {
 	}
 	
 	public void setGuestEmail(Scanner input) {
-		System.out.print("E-maill address : ");
-		String email = input.next();
-		this.setEmail(email);	
+		String email = "";
+		while(!email.contains("@")) {
+		System.out.print("E-mail address : ");
+		email = input.next();
+			try {
+				this.setEmail(email);
+			} 
+			catch (EmailFormatException e) {
+				System.out.println("Incorrect E-mail Format. Put the E-mail address that contains @");
+			}
+		}
 	}
 	
 	public void setGuestPhone(Scanner input) {
