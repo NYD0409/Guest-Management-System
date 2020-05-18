@@ -5,8 +5,13 @@ public class MenuManager {
 			Scanner input = new Scanner(System.in);
 			GuestManager guestManager = new GuestManager(input);
 			
-			int num = -1;
-			while (num != 5) {
+			selectMenu(input, guestManager);
+		}
+	
+	public static void selectMenu(Scanner input, GuestManager guestManager) {
+		int num = -1;
+		while (num != 5) {
+			try {				
 				showMenu();				
 				num = input.nextInt();
 				
@@ -27,7 +32,15 @@ public class MenuManager {
 					continue;
 				}
 			}
-		}
+			catch(InputMismatchException e) {
+				System.out.println("Please put an Integer between 1 - 5 : ");
+				if (input.hasNext()) {
+					input.next();
+				}
+				num = -1;
+			}
+		}	
+	}
 	
 	public static void showMenu() {
 		System.out.println("Guest Management System Menu");

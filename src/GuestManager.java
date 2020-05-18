@@ -8,6 +8,7 @@ import guest.GuestKind;
 import guest.VIPGuest;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class GuestManager {
 	ArrayList<GuestInput> guests = new ArrayList<GuestInput>();
@@ -19,33 +20,43 @@ public class GuestManager {
 	public void addGuest() {
 		int kind = 0;
 		GuestInput guestInput;
-		while (kind != 1 && kind != 2) {
-			System.out.println("1 for Family");
-			System.out.println("2 for Friend");
-			System.out.println("3 for VIP");
-			System.out.print("Select num for Guest Kind between 1 and 3: ");		
-			kind = input.nextInt();
-			
-			if (kind == 1) {
-				guestInput = new FamilyGuest(GuestKind.Family);
-				guestInput.getUserInput(input);
-				guests.add(guestInput);
-				break;
+		while (kind < 1 ||  kind > 2) {
+			try {
+				System.out.println("go into add guests");
+				System.out.println("1 for Family");
+				System.out.println("2 for Friend");
+				System.out.println("3 for VIP");
+				System.out.print("Select num for Guest Kind between 1 and 3: ");		
+				kind = input.nextInt();
+				
+				if (kind == 1) {
+					guestInput = new FamilyGuest(GuestKind.Family);
+					guestInput.getUserInput(input);
+					guests.add(guestInput);
+					break;
+				}
+				else if (kind == 2) {
+					guestInput = new FriendGuest(GuestKind.Friend);
+					guestInput.getUserInput(input);
+					guests.add(guestInput);
+					break;
+				}
+				else if (kind == 3) {
+					guestInput = new VIPGuest(GuestKind.VIP);
+					guestInput.getUserInput(input);
+					guests.add(guestInput);
+					break;
+				}
+				else {
+					System.out.print("Select num for Guest Kind between 1 and 2: ");
+				}
 			}
-			else if (kind == 2) {
-				guestInput = new FriendGuest(GuestKind.Friend);
-				guestInput.getUserInput(input);
-				guests.add(guestInput);
-				break;
-			}
-			else if (kind == 3) {
-				guestInput = new VIPGuest(GuestKind.VIP);
-				guestInput.getUserInput(input);
-				guests.add(guestInput);
-				break;
-			}
-			else {
-				System.out.print("Select num for Guest Kind between 1 and 2: ");
+			catch(InputMismatchException e) {
+				System.out.println("Please put an Integer between 1 - 3 : ");
+				if (input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
 			}
 		}
 	}
