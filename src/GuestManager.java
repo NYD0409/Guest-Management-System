@@ -2,17 +2,21 @@ import java.util.Scanner;
 
 import guest.FamilyGuest;
 import guest.FriendGuest;
-import guest.Guest;
 import guest.GuestInput;
 import guest.GuestKind;
 import guest.VIPGuest;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
-public class GuestManager {
+public class GuestManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3106402261043753375L;
 	ArrayList<GuestInput> guests = new ArrayList<GuestInput>();
-	Scanner input;
+	transient Scanner input;
 	GuestManager(Scanner input){
 		this.input = input;		
 	}
@@ -144,5 +148,9 @@ public class GuestManager {
 		System.out.println(" 4. Edit Phone");
 		System.out.println(" 5. Exit");
 		System.out.print("Select one number between 1 - 5:");	
+	}
+	
+	public void setScanner(Scanner input) {
+		this.input = input;
 	}
 }

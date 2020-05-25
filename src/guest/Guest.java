@@ -1,10 +1,15 @@
 package guest;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.EmailFormatException;
 
-public abstract class Guest implements GuestInput {
+public abstract class Guest implements GuestInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3613473607267977618L;
 	protected GuestKind kind = GuestKind.Family;
 	protected String name;
 	protected int code;
