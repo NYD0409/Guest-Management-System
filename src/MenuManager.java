@@ -1,6 +1,10 @@
 import java.util.*;
 
+import log.EventLogger;
+
 public class MenuManager {
+	static EventLogger logger = new EventLogger("log.txt");
+	
 	public static void main(String[] args) {
 			Scanner input = new Scanner(System.in);
 			GuestManager guestManager = new GuestManager(input);
@@ -18,15 +22,19 @@ public class MenuManager {
 				switch(num) {
 				case 1:
 					guestManager.addGuest();
+					logger.log("add guest");
 					break;
 				case 2:
 					guestManager.deleteGuest();
+					logger.log("delete guest");
 					break;
 				case 3:
 					guestManager.editGuest();
+					logger.log("edit guest");
 					break;
 				case 4:
 					guestManager.viewGuests();
+					logger.log("edit a list of guest");
 					break;
 				default:
 					continue;
